@@ -49,7 +49,7 @@ uint8_t enble_s = 0;
 		osThreadDef(sysInitTask, StartSysInitTask, osPriorityRealtime, 0, SYS_INIT_HEAP_SIZE);
 		startSysInitTaskHandle = osThreadCreate(osThread(sysInitTask), NULL);
     /* -------- 帧率软定时创建 --------- */
-#if defined (__FPS)
+#if defined (_FPS_)
     	FpsUserTimeInit();
 #endif
 	}

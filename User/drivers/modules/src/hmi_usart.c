@@ -31,7 +31,7 @@
 	* @param   串口结构体地址
 	* @retval  HAL Status 
 	*/
-	HAL_StatusTypeDef HmiUsartInit(hmiStrct* hmi)
+	HAL_StatusTypeDef HmiUsartInit(hmiStrct* hmi,UART_HandleTypeDef* huart)
 	{
       hmi->status = MOD_READ;
       if(hmi == NULL)
@@ -43,7 +43,8 @@
       hmi->commot = 0;
       hmi->angle = 0;
       hmi->distance = 0;
-      if(UsartAndDMAInit(HMI_USART,BUFFER_DATA_HMI,ENABLE) != HAL_OK)
+			hmi->uart = huart;
+      if(UsartAndDMAInit(hmi->uart,BUFFER_DATA_HMI,ENABLE) != HAL_OK)
       {
         //报错机制
         return HAL_ERROR;
@@ -62,7 +63,7 @@
 	{
     uint8_t j=0,q=0,po=0;
     int16_t sdsf = 0;
-		if(UserUsartQueueRX(HMI_USART,hmi->data) == HAL_OK)
+		if(UserUsartQueueRX(hmi->uart,hmi->data) == HAL_OK)
     {
       
       for(int i=DATA_LEN_BYTE_LEN;i<BUFFER_DATA_HMI;)

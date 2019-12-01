@@ -1,4 +1,4 @@
-﻿/**
+/**
 	|--------------------------------- Copyright --------------------------------|
 	|                                                                            |
 	|                      (C) Copyright 2019,海康平头哥,                         |
@@ -57,9 +57,10 @@
     int16_t distance;
     float angle;
     fps_t fps;
+		UART_HandleTypeDef* uart;
 	}hmiStrct;
   
-	HAL_StatusTypeDef HmiUsartInit(hmiStrct* hmi);
+	HAL_StatusTypeDef HmiUsartInit(hmiStrct* hmi,UART_HandleTypeDef* huart);
   void HmiUsartParseData(hmiStrct* hmi);
 #endif	// __HMI_USART_H
 /*-----------------------------------file of end------------------------------*/

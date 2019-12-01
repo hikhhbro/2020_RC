@@ -1,4 +1,4 @@
-﻿/**
+/**
   |-------------------------------- Copyright -----------------------------------|
   |                                                                              |
   |                        (C) Copyright 2019,海康平头哥,                         |
@@ -45,20 +45,21 @@ int16_t low_cont,max_low_cont=500;
     * @param   void
     * @retval  void
     */
-    HAL_StatusTypeDef PcDataRxInit(pcDataStruct* pc)
+    HAL_StatusTypeDef PcDataRxInit(pcDataStruct* pc,UART_HandleTypeDef* huart)
     {
       pc->status = MOD_READ;
       if(pc == NULL)
       {
         return HAL_ERROR;
       }
+			pc->usart = huart;
       pc->pitch_target_angle = 0;
       pc->yaw_target_angle = 0;
       pc->commot = 0;
       pc->status = 0;
       GyinitQueue(&pc_yaw_queue);
       GyinitQueue(&pc_pitch_queue);
-      if(UsartAndDMAInit(PC_DATA_UASRT,PC_DATA_LEN_BSP,ENABLE) != HAL_OK)
+      if(UsartAndDMAInit(pc->usart,PC_DATA_LEN_BSP,ENABLE) != HAL_OK)
       {
         //报错机制
         return HAL_ERROR;
@@ -87,7 +88,7 @@ int16_t low_cont,max_low_cont=500;
     int16_t e_pitch_temp =IND_PITCH,e_yaw_temp=IND_YAW;//英特尔  490//普通   270  290
 void Pc_ParseData(pcDataStruct* pc)
 {
-  if(UserUsartQueueRX(PC_DATA_UASRT,pc_databuff) == HAL_OK)
+  if(UserUsartQueueRX(pc->usart,pc_databuff) == HAL_OK)
   {
     if(pc_databuff[0+DATA_LEN_BYTE_LEN] == PC_CHECK_BYTE)
     {
@@ -278,7 +279,7 @@ void EscPc(int16_t key,int16_t ch1,int16_t ch2,int16_t ch3,int16_t ch4,int16_t t
     if(esc == 'q')
     esc = 'r';
   }
-  if(HAL_UART_Transmit(PC_DATA_UASRT,&esc,1,1) ==HAL_OK)
+  //if(HAL_UART_Transmit(PC_DATA_UASRT,&esc,1,1) ==HAL_OK)
       Fps(tem_fps1);
    // HAL_UART_Transmit(PC_DATA_UASRT,'r',1,0);
   //printf("r");

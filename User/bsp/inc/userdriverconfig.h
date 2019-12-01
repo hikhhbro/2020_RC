@@ -48,7 +48,6 @@
 #define RED_GAME  1
 
  //#define DEBUG_BY
-#define __FPS //开启帧率统计模块
 /* ------------- 按键接口----------------- */
 #define DISABLE_MOD 3
 #define RC_MOD      2
@@ -170,15 +169,15 @@
       #define BUZZER_TIM (&htim12)
 
 		 #define GIMBAL_CAN (&hcan1)    //云台电机的can
-     #define CHASSIS_CAN (&hcan2)    //云台电机的can
-     #define  GYRO_CAN //(&hcan2)
+     //#define CHASSIS_CAN (&hcan2)    //云台电机的can
+     //#define  GYRO_CAN //(&hcan2)
 
-     #define PC_DATA_UASRT (&huart3)//小电脑数据接收串口
-     #define COMMUNICAT    (&huart3)//裁判系统串口
-     #define HMI_USART     (&huart8)//串口屏串口
+     //#define PC_DATA_UASRT (&huart3)//小电脑数据接收串口
+     //#define COMMUNICAT    (&huart3)//裁判系统串口
+    // #define HMI_USART     (&huart8)//串口屏串口
      #define RC_UART       (&huart1)//遥控串口宏定义
 		 #define SERVO_USART   (&huart2)//舵机串口
-     #define DEBUG_UART (&huart2)
+    // #define DEBUG_UART (&huart2)
 
 /* -------------- 激光红外开关引脚宏定义 ----------------- */
     #define LASER_SWITCH_BACK       GPIO_PIN_9 //后侧

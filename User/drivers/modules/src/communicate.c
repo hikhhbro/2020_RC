@@ -1,4 +1,4 @@
-﻿/**
+/**
 	|--------------------------------- Copyright --------------------------------|
 	|                                                                            |
 	|                      (C) Copyright 2019,海康平头哥,                         |
@@ -101,9 +101,9 @@ RobotId_t seftRobotID_t = {
   * @param   void
   * @retval  void
   */
-void CommunicateInit(void)
+void CommunicateInit(UART_HandleTypeDef* huart)
 {
-  UsartAndDMAInit(COMMUNICAT,COMMUN_RX_BUFF,ENABLE);
+  UsartAndDMAInit(huart,COMMUN_RX_BUFF,ENABLE);
   ext_refereeSystem_t. p_robot_state_t  = &robot_state_t;
   SetFpsAddress(robot_state_t.fps);
   ext_refereeSystem_t. p_power_heat_data_t  = &power_heat_data_t;
@@ -127,10 +127,10 @@ ext_refereeSystem_t.p_ext_game_state_t = &game_state_t;
   * @param   void
   * @retval  void
   */
-  void CommunicateParse(void)
+  void CommunicateParse(UART_HandleTypeDef* huart)
   {
     uint16_t datalen;
-    datalen = UserUsartQueueRX(COMMUNICAT,reebuff);
+    datalen = UserUsartQueueRX(huart,reebuff);
    if(datalen != DATA_EMPTY)
    {
      for(int i=0;i< datalen;)

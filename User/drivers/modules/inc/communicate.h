@@ -1,4 +1,4 @@
-﻿/**
+/**
 	|--------------------------------- Copyright --------------------------------|
 	|                                                                            |
 	|                      (C) Copyright 2019,海康平头哥,                         |
@@ -34,8 +34,8 @@
 #define WILD    5
 typedef void (*ref_send_handler_t)(uint8_t* buf, uint16_t len);
 
-  void CommunicateInit(void);
-  void CommunicateParse(void);
+  void CommunicateInit(UART_HandleTypeDef* huart);
+  void CommunicateParse(UART_HandleTypeDef* huart);
   uint16_t GetCmdId(uint8_t *data);
   void Robotstateparse(uint8_t *data);
   void PowerHeatDataParse(uint8_t *data);

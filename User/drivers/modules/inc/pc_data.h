@@ -1,4 +1,4 @@
-﻿/**
+/**
   |-------------------------------- Copyright -----------------------------------|
   |                                                                              |
   |                        (C) Copyright 2019,海康平头哥,                         |
@@ -38,9 +38,10 @@ typedef struct pcDataStruct
   int16_t tem_fps;
   fps_t fps;
   int16_t distance;//单位cm
+	UART_HandleTypeDef* usart;
 }pcDataStruct;
      void Pc_ParseData(pcDataStruct* pc);
-     HAL_StatusTypeDef PcDataRxInit(pcDataStruct* pc);
+     HAL_StatusTypeDef PcDataRxInit(pcDataStruct* pc,UART_HandleTypeDef* huart);
 
 int16_t YawDataConversion(int16_t yaw);
 int16_t PitchDataConversion(int16_t pitch);
