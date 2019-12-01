@@ -732,6 +732,16 @@
               <FileType>5</FileType>
               <FilePath>..\..\User\drivers\modules\inc\hmi_usart.h</FilePath>
             </File>
+            <File>
+              <FileName>air_valve.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\drivers\modules\src\air_valve.c</FilePath>
+            </File>
+            <File>
+              <FileName>air_valve.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\User\drivers\modules\inc\air_valve.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

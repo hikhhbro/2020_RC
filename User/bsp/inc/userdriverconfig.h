@@ -145,7 +145,7 @@
 /* ----------------- 编码器宏定义接口 -------------------- */
      #define ENCODE_A    GPIO_PIN_6//编码器A相   
      #define ENCODE_B    GPIO_PIN_7//编码器B相  
-     #define ENCODE_Z    GPIO_PIN_6//编码器B相  
+     #define ENCODE_Z    GPIO_PIN_6//编码器Z相  
      #define ENCODE_Z_GPIO GPIOE
      #define ENCODE_GPIO GPIOC
      #define ENCOER_TIM  (&htim3)//编码器宏接口
